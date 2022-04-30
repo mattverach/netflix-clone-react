@@ -20,7 +20,7 @@ function HomeScreen() {
         />
         <Row 
         title='Popular'
-        fetchUrl={requests.fetchNetflixOriginals}
+        fetchUrl={requests.fetchTrending}
         isLargeRow={false}
         />
         <Row 
