@@ -1,27 +1,51 @@
+import { useState } from "react";
 import { TextField } from "@mui/material";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 function Login(){
+
+    const [formData, setFormData] = useState({email: "", password: ""});
+
+
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log("Envio de formulario: ", formData);
 
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-
-        console.log(email, password);
-
-
-       if (email === '' || password === '') {
-           console.log('Por favor, complete todos los campos');
     }
-}
+
+    const changeHandler = (e) => {
+        setFormData({ 
+            ...formData,
+            [e.target.name] : e.target.value});
+    }
+
 
     return(
         <div className="login">
             <h2>Ingresar</h2>
+            {console.log("formData: ", formData)}
             <ValidatorForm onSubmit={submitHandler}>
-                <TextField id="filled-email" label="Email" variant="filled" name="email" type="email"/>
-                <TextField id="filled-password" label="Contraseña" variant="filled" name="password" type="password"/>
+                <TextValidator 
+                    id="filled-email" 
+                    label="Email" 
+                    variant="filled" 
+                    name="email" 
+                    value={formData.email}
+                    onChange={changeHandler}
+                    validators={['required', 'isEmail']}
+                    errorMessages={['Este campo es obligatorio', 'Email ingresado no es valido']}
+                />
+                <TextValidator 
+                    id="filled-password" 
+                    label="Contraseña" 
+                    variant="filled" 
+                    name="password" 
+                    value={formData.password}
+                    onChange={changeHandler}
+                    type="password"
+                    validators={['required']}
+                    errorMessages={['Este campo es obligatorio']}
+                />
             <button type="submit">Ingresar</button>
              </ValidatorForm>
         </div>
