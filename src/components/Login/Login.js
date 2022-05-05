@@ -2,9 +2,10 @@ import { useState, forwardRef } from "react";
 import { TextField } from "@mui/material";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import axios from "axios";
-import setLogin from "../services/Login.service";
+import setLogin from "../../services/Login.service";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { useNavigate } from "react-router-dom";
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -20,23 +21,25 @@ function Login(){
         type: ""
     });
 
+    const navigate = useNavigate();
+
+    //Se encarga del submit del formulario y de actuar segun la respuesta del servidor
     const submitHandler = (e) => {
         e.preventDefault();
         console.log("Envio de formulario: ", formData);
         setLogin(formData)
         .then(
             (response) => {
-                if(response.status === 200){
-                    console.log("Usuario autenticado");
+                console.log("Usuario autenticado");
                     setToken(response.data.token);
+                    
                     setShowMessage({
                         status: true,
                         message: "Usuario autenticado",
                         type: "success"
                     });
-                }else{
-                    console.log("Usuario no autenticado");
-                }
+                    localStorage.setItem("token", response.data.token);
+                    navigate("/");
             })
         .catch((err) => {
             console.log("Error: ", err);
@@ -45,12 +48,15 @@ function Login(){
                 message: "Usuario no autenticado",
                 type: "error"
             });
+            //borrar cuando tenga el backend
+            navigate("/")
         })
         .finally(() => {
             console.log("Finalizado");
         });
     }
 
+    //Se encarga de cerrar el mensaje de error
     const handleClose = () => {
         setShowMessage({
             ...showMessage,
@@ -58,6 +64,7 @@ function Login(){
         })
     }
 
+    //Se encarga de los cambios en el formulario para que sean validados
     const changeHandler = (e) => {
         setFormData({ 
             ...formData,
