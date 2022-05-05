@@ -6,6 +6,7 @@ import setLogin from "../../services/Login.service";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
+import './Login.css';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -48,7 +49,7 @@ function Login(){
                 message: "Usuario no autenticado",
                 type: "error"
             });
-            //borrar cuando tenga el backend
+            // TODO: borrar cuando tenga el backend
             navigate("/")
         })
         .finally(() => {

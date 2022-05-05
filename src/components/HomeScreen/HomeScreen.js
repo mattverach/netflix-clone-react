@@ -1,12 +1,26 @@
 import React from 'react'
 import './HomeScreen.css'
-import Banner from '../Banner/Banner'
-import Nav from '../Nav/Nav'
+import Banner from '../../components/Banner/Banner'
+import Nav from '../../components/Nav/Nav'
 import requests from '../../Requests'
-import Row from '../Row/Row'
+import Row from '../../components/Row/Row'
+import { useNavigate } from 'react-router-dom'
+import {useEffect} from 'react'
+import Login from '../../components/Login/Login'
 
 
 function HomeScreen() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token') === null || localStorage.getItem('token') === undefined) {
+      console.log('No hay token')
+      // descomentar cuando tenga el backend
+      // navigate('/login')
+    }
+  }, []);
+
   return (
     <div className='homeScreen'>
         <Nav />

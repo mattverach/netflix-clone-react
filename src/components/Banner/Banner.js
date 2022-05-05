@@ -8,6 +8,7 @@ function Banner() {
 
     const [movie, setMovie] = useState([]);
 
+    // Se recibe el parametro fetchNetflixOriginals del componente requests y se ejecuta con el metodo axios, se toma un item random del array y se guarda en la variable movie
     useEffect(() => {
         async function fetchData() {
             const request = await axios.get(requests.fetchNetflixOriginals);
@@ -19,7 +20,7 @@ function Banner() {
         }
         fetchData();
     }, [])
-
+    // Se recibe un string (descripcion de pelicula) y un integer (numero de caracteres) y se retorna un string con el numero de caracteres indicado
     function truncate(string, n) {
         return string?.length > n ? string.substring(0, n - 1) + '...' : string
 
