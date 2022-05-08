@@ -1,4 +1,53 @@
+@font-face {
+  font-family: '_.uploaded_file';
+  src: url('./fonts/netflixsans-bold-webfont.woff2') format('woff2'),
+       url('./fonts/netflixsans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: '_.uploaded_file';
+  src: url('./fonts/netflixsans-light-webfont.woff2') format('woff2'),
+       url('./fonts/netflixsans-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: '_.uploaded_file';
+  src: url('./fonts/netflixsans-medium-webfont.woff2') format('woff2'),
+       url('./fonts/netflixsans-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: '_.uploaded_file';
+  src: url('./fonts/netflixsans-regular-webfont.woff2') format('woff2'),
+       url('./fonts/netflixsans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 .app {
   /* background-color: #111; */
     height: 100%;
+}
+
+p,a,span,h1,h2,h3,h4 {
+  font-family: '_.uploaded_file';
 }
