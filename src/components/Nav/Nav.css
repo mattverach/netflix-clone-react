@@ -50,7 +50,8 @@
 
 .nav_notifications {
     color: white;
-    margin-right: 90px;
+    margin-right: 70px;
+    text-decoration: none;
 }
 
 .nav_black {
@@ -79,4 +80,16 @@
     height: 100%;
     margin-left: 120px;
     font-weight: 100;
+}
+
+.nav_button{
+    color: white;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 100;
+    transition-timing-function: ease-in;
+    transition: all 0.3s;
+    
 }
